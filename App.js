@@ -1,21 +1,39 @@
 import { StatusBar } from 'expo-status-bar';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
-export default function App() {
+import WelcomeScreen from './app/screens/WelcomeScreen';
+import Socials from './app/screens/Socials'
+
+const App = () => {
+
+  const handleLoginPress = () => {
+    setContent(<Socials />);
+  }
+
+  const [content, setContent] = useState(<WelcomeScreen onLoginPress={handleLoginPress} />);
+
+  const styles = StyleSheet.create({
+    mainView: {
+      backgroundColor: "#C0BBFF",
+      flex: 1,
+      flexDirection: 'column',
+      maxHeight: 926,
+      maxWidth: 428,
+      width: '100%',
+      height: '100%',
+      top: 50,
+      bottom: 50,
+      left: 50,
+    },
+  });
+
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
+    <View style={styles.mainView}>
+      {content}
     </View>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
