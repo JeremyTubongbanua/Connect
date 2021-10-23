@@ -3,15 +3,16 @@ import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 import WelcomeScreen from './app/screens/WelcomeScreen';
-import Socials from './app/screens/Socials'
+import Socials from './app/screens/Socials';
+import Events from './app/screens/Events';
 
 const App = () => {
 
-  const handleLoginPress = () => {
-    setContent(<Socials />);
-  }
+  let welcomeScreen = <WelcomeScreen onLoginPress={() => { setContent(socialScreen) }} />;
+  let socialScreen = <Socials onContinuePress={() => { setContent(eventsScreen) }} />;
+  let eventsScreen = <Events />;
 
-  const [content, setContent] = useState(<WelcomeScreen onLoginPress={handleLoginPress} />);
+  const [content, setContent] = useState(eventsScreen);
 
   const styles = StyleSheet.create({
     mainView: {
@@ -25,6 +26,8 @@ const App = () => {
       top: 50,
       bottom: 50,
       left: 50,
+      borderWidth: 1,
+      borderColor: 'black',
     },
   });
 
