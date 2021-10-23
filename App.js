@@ -12,7 +12,7 @@ const App = () => {
   let socialScreen = <Socials onContinuePress={() => { setContent(eventsScreen) }} />;
   let eventsScreen = <Events />;
 
-  const [content, setContent] = useState(eventsScreen);
+  const [content, setContent] = useState(welcomeScreen);
 
   const styles = StyleSheet.create({
     mainView: {
